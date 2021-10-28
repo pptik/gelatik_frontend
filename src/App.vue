@@ -1,8 +1,17 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div>
+      <b-navbar toggleable="sm" type="light" variant="light">
+        <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
+
+        <b-navbar-brand>Gelatik 2021</b-navbar-brand>
+
+        <b-collapse id="nav-text-collapse" is-nav>
+          <b-navbar-nav>
+            <b-nav-text to="/">Home</b-nav-text>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
     </div>
     <router-view/>
   </div>
