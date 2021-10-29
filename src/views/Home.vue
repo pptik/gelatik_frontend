@@ -2,7 +2,7 @@
   <b-container>
     <div class="home">
       {{ user }}
-      <b-table striped hover :items="items" :fields="fields"></b-table>
+      <b-table striped hover :items="user" :fields="fields"></b-table>
     </div>
   </b-container>
 </template>
@@ -13,10 +13,7 @@ export default {
   data () {
     return {
       user: [],
-      fields: ['first_name', 'last_name', 'age'],
-      items: [
-        { isActive: true, age: 20, first_name: 'rifqi riza', last_name: 'irfansyah' }
-      ]
+      fields: ['EMAIL', 'PASSWORD']
     }
   },
   mounted () {
@@ -25,7 +22,7 @@ export default {
   methods: {
     async getData () {
       const users = await auth.getUsers()
-      this.user = users
+      this.user = users.data.data
     }
   }
 }
