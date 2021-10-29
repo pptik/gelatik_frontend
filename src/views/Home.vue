@@ -1,7 +1,7 @@
 <template>
   <b-container>
     <div class="home">
-      {{ user }}
+
       <b-table striped hover :items="user" :fields="fields"></b-table>
     </div>
   </b-container>
