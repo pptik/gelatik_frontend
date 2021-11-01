@@ -1,8 +1,11 @@
 <template>
   <b-container>
     <div class="home">
-
-      <b-table striped hover :items="user" :fields="fields"></b-table>
+      <b-table striped hover :items="user" :fields="fields">
+        <template #cell(Action)="data">
+          <b-button variant="danger" @click="deleteUsers(data.item._id)">Delete user</b-button>
+        </template>
+      </b-table>
     </div>
   </b-container>
 </template>
@@ -13,7 +16,7 @@ export default {
   data () {
     return {
       user: [],
-      fields: ['EMAIL', 'PASSWORD']
+      fields: ['EMAIL', 'PASSWORD', 'Action']
     }
   },
   mounted () {
@@ -23,6 +26,10 @@ export default {
     async getData () {
       const users = await auth.getUsers()
       this.user = users.data.data
+    },
+    async deleteUsers (id) {
+      await auth.deleteUsers(id)
+      this.getData()
     }
   }
 }
